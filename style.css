@@ -1,0 +1,525 @@
+/* --- Root Variables for Light & Dark Themes --- */
+:root {
+    --bg-color: #F3F4F4;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --nav-bg: #ffffff;
+    --muted-color: #666666;
+    --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121214;
+    --text-color: #e1e1e6;
+    --card-bg: #1c1c24;
+    --nav-bg: #181820;
+    --muted-color: #a0a0ab;
+    --border-color: #2e2e38;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+    margin-top: 70px;
+}
+
+/* --- Fixed Navigation Bar --- */
+.nav {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--nav-bg);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+    color: #6367FF;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.bar {
+    width: 25px;
+    height: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.bar span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+}
+
+.nav_list {
+    display: flex;
+    align-items: center;
+}
+
+.nav_list > ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.list {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.list:hover, .list.active {
+    color: #6367FF;
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .theme-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* --- Hero Section --- */
+.hero_box {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+.left_hero {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner_hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name_box {
+    padding: 6px 14px;
+    background-color: #FFC570;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.name {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.name h1 {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--text-color);
+    width: 0;
+    animation: typing 4s steps(28, end) infinite alternate, blink 0.8s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 26ch; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.dec {
+    font-size: 16px;
+    color: var(--muted-color);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* --- Social Icons with Solid White Circles & Centered SVGs --- */
+.icons, .icons2 {
+    display: flex;
+    gap: 15px;
+}
+
+.insta, .linkdin, .github {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.insta:hover, .linkdin:hover, .github:hover {
+    transform: translateY(-3px);
+}
+
+.insta { background-image: url("https://www.svgrepo.com/show/424911/instagram-logo-facebook-2.svg"); }
+.linkdin { background-image: url("https://www.svgrepo.com/show/506517/linkedin.svg"); }
+.github { background-image: url("https://www.svgrepo.com/show/516640/github.svg"); }
+
+.right_hero {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+    background-position: center;
+    background-size: cover;
+}
+
+/* --- Content Sections --- */
+section {
+    padding: 80px 5% 40px 5%;
+}
+
+.top_header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.top_header h1 {
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.top_header p {
+    color: var(--muted-color);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about_info {
+    padding: 30px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.about_info:hover, .card:hover, .contact_card:hover, .forms:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(99, 103, 255, 0.15);
+}
+
+.skills_box {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.skills_header {
+    margin-bottom: 15px;
+}
+
+.skills_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills_list span {
+    font-size: 14px;
+    background: #4C8CE4;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* --- Projects Cards --- */
+.card_box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+.card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 30px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.card_content h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.card_content p {
+    font-size: 14px;
+    color: var(--muted-color);
+}
+
+.completed, .clint, .blog, .todo {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+}
+
+.completed { background-image: url("https://www.svgrepo.com/show/262744/curriculum-vitae-portfolio.svg"); }
+.clint { background-image: url("https://static.vecteezy.com/system/resources/previews/050/816/833/non_2x/swiggy-transparent-icon-free-png.png"); }
+.blog { background-image: url("https://www.svgrepo.com/show/135410/blog.svg"); }
+.todo { background-image: url("https://www.svgrepo.com/show/356977/todo-list.svg"); }
+
+/* --- Contact Section & Form --- */
+.contact_card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact_card h2 {
+    color: var(--text-color);
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.contact p {
+    color: var(--muted-color);
+}
+
+.mail, .phone {
+    width: 35px;
+    height: 35px;
+    background-position: center;
+    background-size: cover;
+    flex-shrink: 0;
+}
+
+.mail { background-image: url("https://www.svgrepo.com/show/533193/mail.svg"); }
+.phone { background-image: url("https://www.svgrepo.com/show/524804/phone-rounded.svg"); }
+
+.forms {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.name_email, .message {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.name_email:focus, .message:focus {
+    border-color: #6367FF;
+}
+
+.message {
+    height: 120px;
+    resize: vertical;
+}
+
+.button1 {
+    width: 100px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7132CA;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button1:hover {
+    background-color: #5c24a7;
+}
+
+/* --- Footer --- */
+footer {
+    width: 100%;
+    padding: 40px 20px;
+    background-color: #1e1e2f;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+footer h1 {
+    color: #fff;
+    font-size: 24px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #888;
+}
+
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 768px) {
+    .bar {
+        display: flex;
+    }
+
+    .nav_list {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        height: calc(100dvh - 70px);
+        background-color: var(--nav-bg);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        padding-top: 40px;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+    }
+
+    .nav_list.active {
+        display: flex !important;
+    }
+
+    .nav_list > ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .hero_box {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .left_hero, .right_hero {
+        width: 100%;
+        align-items: center;
+    }
+
+    .inner_hero {
+        align-items: center;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col {
+        width: 100%;
+    }
+
+    .img {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+}
