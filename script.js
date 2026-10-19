@@ -1,19 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Mobile Hamburger Menu Toggle
-    const menuToggle = document.querySelector(".bar");
-    const navList = document.querySelector(".nav_list");
-    const navLinks = document.querySelectorAll(".nav_list a");
+    // 1. Mobile Hamburger Menu Toggle (Scoped to Header .nav)
+    const menuToggle = document.querySelector(".nav .bar");
+    const navList = document.querySelector(".nav .nav_list");
+    const navLinks = document.querySelectorAll(".nav .nav_list a");
 
     if (menuToggle && navList) {
         menuToggle.addEventListener("click", (e) => {
             e.stopPropagation();
             navList.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+            document.body.classList.toggle("menu-open");
         });
 
         // Close menu when clicking outside
         document.addEventListener("click", (e) => {
             if (!navList.contains(e.target) && !menuToggle.contains(e.target)) {
                 navList.classList.remove("active");
+                menuToggle.classList.remove("active");
+                document.body.classList.remove("menu-open");
             }
         });
 
@@ -21,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 navList.classList.remove("active");
+                menuToggle.classList.remove("active");
+                document.body.classList.remove("menu-open");
             });
         });
     }
@@ -84,5 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             contactForm.reset();
         });
+    }
+
+    // 5. Dynamic Copyright Year
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
     }
 });
